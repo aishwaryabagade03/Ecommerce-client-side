@@ -1,0 +1,166 @@
+h1{
+  font-size: 48px;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.homesection{
+  height: 650px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+}
+
+.homesection img{
+  height: 100%;
+  width: 100%;
+}
+div#headlessui-popover-panel-\:r21\: {
+  z-index: 99 !important;
+}
+
+.materialimg img{
+  height: 100%;
+  width: 100%;
+}
+
+/* $facebook: #3b5998;
+$twitter: #1da1f2;
+
+// Custom CSS
+.bg-facebook {
+  background-color: $facebook;
+
+  &:hover {
+    background-color: darken($facebook, 5%);
+  }
+}
+
+.bg-twitter {
+  background-color: $twitter;
+
+  &:hover {
+    background-color: darken($twitter, 5%);
+  }
+} */
+
+.subfooter{
+  background-color: rgb(250, 247, 240);
+}
+
+.nav-background{
+  background-color: rgb(250, 247, 240);
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper {
+  width: 100%;
+  height: 300px;
+  margin: 20px auto;
+}
+.append-buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.append-buttons button {
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid #007aff;
+  color: #007aff;
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin: 0 10px;
+  font-size: 13px;
+}
+
+#sidebar {
+  --tw-translate-x: -100%;
+}
+#menu-close-icon {
+  display: none;
+}
+
+#menu-open:checked ~ #sidebar {
+  --tw-translate-x: 0;
+}
+#menu-open:checked ~ * #mobile-menu-button {
+  background-color: rgba(31, 41, 55, var(--tw-bg-opacity));
+}
+#menu-open:checked ~ * #menu-open-icon {
+  display: none;
+}
+#menu-open:checked ~ * #menu-close-icon {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  #sidebar {
+      --tw-translate-x: 0;
+  }
+}
+
+.review {
+  text-align: left !important;
+}
