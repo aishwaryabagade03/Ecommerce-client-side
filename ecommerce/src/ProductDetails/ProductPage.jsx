@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { RadioGroup } from "@headlessui/react";
 
+
 const product = {
   colors: [
     { name: "Yellow", class: "bg-yellow-400", selectedClass: "ring-gray-400" },
@@ -55,6 +56,7 @@ const ProductPage = () => {
       UserID, 
       ProductID
     });
+    alert('Product added to cart!')
   }
 
   return (

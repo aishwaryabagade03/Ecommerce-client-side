@@ -9,24 +9,31 @@ export default function Signup() {
   const [password, setPassword] = useState(""); 
   const [phonenumber, setPhonenumber] = useState("");
 
-  const handleSignIn = () => {
-    axios
-    .post("http://localhost:3003/User/signup", {
-      name,
-      email,
-      password,
-      phonenumber,
+  const handleSignIn = (event) => {
+    event.preventDefault();
+    console.log({ Name: name,Email: email, Password: password, Phonenumber: phonenumber });
+    fetch('http://localhost:3003/User/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        Name: name,
+        Email: email,
+        Password: password,
+        Phonenumber: phonenumber
+
+      }),
     })
-    .then((response) => {
-      if (response.data.success) {
-        navigate("/");
-      } else {
-        console.log("Signup failed.");
-      }
-    })
-    .catch((error) => {
-      console.error("Signup error:", error);
-    });
+    .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.success === true) {
+          localStorage.setItem('token', data.token);
+          navigate('/');
+          const userDetails = data.data._id;
+          localStorage.setItem('userDetails', userDetails);
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -42,13 +49,13 @@ export default function Signup() {
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form className="space-y-6" method="POST" onSubmit={handleSignIn}>
         <div>
-            <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900 text-left">
+            <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900 text-left">
               Name 
             </label>
             <div className="mt-2">
               <input
-                id="name"
-                name="name"
+                id="Name"
+                name="Name"
                 type="name"
                 autoComplete="name"
                 required
@@ -64,8 +71,8 @@ export default function Signup() {
             </label>
             <div className="mt-2">
               <input
-                id="email"
-                name="email"
+                id="Email"
+                name="Email"
                 type="email"
                 autoComplete="email"
                 required
@@ -84,8 +91,8 @@ export default function Signup() {
             </div>
             <div className="mt-2">
               <input
-                id="password"
-                name="password"
+                id="Password"
+                name="Password"
                 type="password"
                 autoComplete="current-password"
                 required
@@ -96,13 +103,13 @@ export default function Signup() {
             </div>
           </div>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900 text-left">
+            <label htmlFor="contact" className="block text-sm font-medium leading-6 text-gray-900 text-left">
               Contact
             </label>
             <div className="mt-2">
               <input
-                id="phonenumber"
-                name="phonenumber"
+                id="Phonenumber"
+                name="Phonenumber"
                 type="phonenumber"
                 autoComplete="phonenumber"
                 required

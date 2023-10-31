@@ -6,22 +6,28 @@ export default function Login() {
   const navigate = useNavigate();
  const [email, setEmail] = useState("");
  const [password, setPassword] = useState("");
-  const handlelogin = () => {
-    axios
-      .get("http://localhost:3003/User/signin",{
-        email,
-        password,
-      })
-      .then((res) => {
-        if (res.data.success) {
-          navigate("/"); 
-        } else {
-          console.log("Authentication failed.");
+  const handlelogin = (event) => {
+    event.preventDefault();
+    console.log({ Email: email, Password: password });
+    fetch('http://localhost:3003/User/signin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        Email: email,
+        Password: password,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.success === true) {
+          localStorage.setItem('token', data.token);
+          navigate('/');
+          const userDetails = data.data._id;
+          localStorage.setItem('userDetails', userDetails);
         }
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => console.log(err));
   };
 
 
@@ -43,8 +49,8 @@ export default function Login() {
               </label>
               <div className="mt-2">
                 <input
-                  id="email"
-                  name="email"
+                  id="Email"
+                  name="Email"
                   type="email"
                   autoComplete="email"
                   required
@@ -68,8 +74,8 @@ export default function Login() {
               </div>
               <div className="mt-2">
                 <input
-                  id="password"
-                  name="password"
+                  id="Password"
+                  name="Password"
                   type="password"
                   autoComplete="current-password"
                   required
